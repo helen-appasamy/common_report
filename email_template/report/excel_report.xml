@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <report
+      id="approval_count"
+      string= "No.of State Count"
+      model="purchase.order"
+      report_type="xlsx"
+      file="email_template.report_approval_count"
+      name="email_template.report_approval_count"
+      />
+    </data>
+  </odoo>

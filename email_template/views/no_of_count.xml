@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record model="ir.ui.view" id="add_the_state_field">
+    <field name="name">the state field</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name = 'date_order']" position="after">
+        <field name="approve_count" attrs="{'invisible': [('state',  'in', ('sent', 'draft', 'done', 'cancel', 'purchase'))]}"/>
+      </xpath>
+      <xpath expr="//field[@name = 'approve_count']" position="after">
+        <field name="draft_count" attrs="{'invisible': [('state',  'in', ('to approve', 'sent', 'done', 'cancel', 'purchase'))]}"/>
+      </xpath>
+      <xpath expr="//field[@name = 'draft_count']" position="after">
+        <field name="sent_count" attrs="{'invisible': [('state',  'in', ('draft', 'to approve', 'done', 'cancel', 'purchase'))]}"/>
+      </xpath>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="add_the_approval_level_fields">
+    <field name="name">the appproval level fields</field>
+    <field name="model">res.company</field>
+    <field name="inherit_id" ref="base.view_company_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='favicon']" position="after">
+        <field name="approval_level1"/>
+      </xpath>
+      <xpath expr="//field[@name='approval_level1']" position="after">
+        <field name="approval_level2"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

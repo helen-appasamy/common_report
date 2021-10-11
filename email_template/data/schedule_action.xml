@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data noupdate="1">
+      <record id="ir_send_mail_cron_scheduler_action" model="ir.cron">
+        <field name="name">Auto Email scheduler</field>
+        <field name="model_id" ref="model_purchase_order" />
+        <field name="state">code</field>
+        <field name="code">model.action_send_email()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="True" name="doall" />
+        <field eval="True" name="active"/>
+      </record>
+    </data>
+  </odoo>
